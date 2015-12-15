@@ -38,7 +38,7 @@ import java.util.List;
 public class GroundItemPlugin extends BasePlugin
 {
     public Config config = null;
-    private String repository = "hexosse/GroundItemPlugin";
+    private String repository = "hexosse/GroundItemApi";
     private List<GroundItem> groundItemList = new ArrayList<GroundItem>();
 
 

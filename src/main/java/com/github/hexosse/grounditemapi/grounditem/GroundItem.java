@@ -25,9 +25,6 @@ public class GroundItem
     // Data used to create the groung item
     private ItemStack itemStack = null;
     private Location location = null;
-    // Offset used to adjust the ground item location
-    private static Vector dropOffset = new Vector(0.5, 0.95, 0.5);
-    // todo : ajuster l'ofset via le fichier de config
 
     /**
      * Constructs a new GroundItem at the given location
@@ -37,7 +34,7 @@ public class GroundItem
     public GroundItem(ItemStack itemStack, Location location)
     {
         this.itemStack = itemStack;
-        this.location = new Location(location.getWorld(), location.getBlockX(), location.getBlockY(), location.getBlockZ());
+        this.location = new Location(location.getWorld(), location.getX(), location.getY(), location.getZ());
     }
 
 
@@ -66,7 +63,7 @@ public class GroundItem
         itemStack.setItemMeta(meta);
 
         // Create ground item
-        groundItem = location.getWorld().dropItem(new Location(location.getWorld(), location.getX() + dropOffset.getX(), location.getY() + dropOffset.getY(), location.getZ() + dropOffset.getZ()), itemStack);
+        groundItem = location.getWorld().dropItem(new Location(location.getWorld(), location.getX(), location.getY(), location.getZ()), itemStack);
         groundItem.setVelocity(new Vector(0, 0, 0));
         return true;
     }
@@ -81,9 +78,6 @@ public class GroundItem
     {
         // Check if ground item exist
         if(groundItem==null) return false;
-        // Check if location is valid
-        //if(location==null) return false;
-        //if(Bukkit.getServer().getWorld(location.getWorld().getName())==null) return false;
 
         // remove ground item
         groundItem.remove();

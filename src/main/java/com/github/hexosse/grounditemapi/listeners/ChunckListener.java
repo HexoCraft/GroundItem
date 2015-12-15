@@ -7,6 +7,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.world.ChunkLoadEvent;
 import org.bukkit.event.world.ChunkUnloadEvent;
+import org.bukkit.scheduler.BukkitRunnable;
 
 /**
  * This file is part GroundItemPlugin
@@ -30,10 +31,15 @@ public class ChunckListener extends BaseListener<GroundItemPlugin>
     {
         // Create ground items that has not been created
         // because of chunks not loaded at startup
-        for(GroundItem groundItem : plugin.getGroundItemList())
+        for(final GroundItem groundItem : plugin.getGroundItemList())
         {
-            if(groundItem.getItem()==null)
-                groundItem.create();
+            new BukkitRunnable() {
+                @Override
+                public void run() {
+                    groundItem.create();
+                }
+
+            }.runTaskLater(plugin, 20*2);
         }
     }
 
