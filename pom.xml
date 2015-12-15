@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.hexosse</groupId>
-    <artifactId>grounditemapi</artifactId>
+    <artifactId>GroundItemApi</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>GroundItemApi</name>
@@ -195,11 +195,21 @@
                             <artifactSet>
                                 <includes>
                                     <!-- Force BasePlugin à être compris dans le .jar-->
-                                    <include>com.github.hexosse:BasePlugin</include>
+                                    <!-- <include>com.github.hexosse:BasePlugin</include>-->
                                     <!-- Force GitHubUpdater à être compris dans le .jar-->
-                                    <include>com.github.hexosse:GitHubUpdater</include>
+                                    <!-- <include>com.github.hexosse:GitHubUpdater</include>-->
                                 </includes>
                             </artifactSet>
+                            <relocations>
+                                <relocation>
+                                    <pattern>com.github.hexosse.baseplugin</pattern>
+                                    <shadedPattern>com.github.hexosse.${project.artifactId}.baseplugin</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>com.github.hexosse.githubupdater</pattern>
+                                    <shadedPattern>com.github.hexosse.${project.artifactId}.githubupdater</shadedPattern>
+                                </relocation>
+                            </relocations>
                             <!-- utterly useless artifact from shade 2.x -->
                             <createDependencyReducedPom>false</createDependencyReducedPom>
                             <!-- Le fichier jar d'origine est renommé en original-XXXX.jar -->
@@ -222,6 +232,7 @@
                             <Version>${project.version}</Version>
                         </manifestEntries>
                     </archive>
+                    <outputDirectory>../../Server/plugins</outputDirectory>
                 </configuration>
             </plugin>
 
