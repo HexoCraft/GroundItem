@@ -57,14 +57,15 @@ public class GroundItem
         // remove existing groung item
         remove();
 
-        // Name the item so it will be easier to check if it's a ground item
-        final ItemMeta meta = itemStack.getItemMeta();
-        meta.setDisplayName("#%#GROUND#%#ITEM#%#");
-        itemStack.setItemMeta(meta);
-
         // Create ground item
         groundItem = location.getWorld().dropItem(new Location(location.getWorld(), location.getX(), location.getY(), location.getZ()), itemStack);
         groundItem.setVelocity(new Vector(0, 0, 0));
+
+        // Name the item so it will be easier to check if it's a ground item
+        final ItemMeta meta = groundItem.getItemStack().getItemMeta();
+        meta.setDisplayName("#%#GROUND#%#ITEM#%#");
+        groundItem.getItemStack().setItemMeta(meta);
+
         return true;
     }
 
