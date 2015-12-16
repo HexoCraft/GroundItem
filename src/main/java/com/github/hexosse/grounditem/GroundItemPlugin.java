@@ -41,7 +41,7 @@ import java.util.List;
 public class GroundItemPlugin extends BasePlugin
 {
     public Config config = null;
-    private String repository = "hexosse/GroundItemApi";
+    private String repository = "hexosse/GroundItem";
     private List<GroundItem> groundItemList = new ArrayList<GroundItem>();
 
 
@@ -122,7 +122,7 @@ public class GroundItemPlugin extends BasePlugin
      */
     public static GroundItemPlugin getInstance()
     {
-        return (GroundItemPlugin)Bukkit.getPluginManager().getPlugin("GroundItemApi");
+        return (GroundItemPlugin)Bukkit.getPluginManager().getPlugin("GroundItem");
     }
 
     /**
