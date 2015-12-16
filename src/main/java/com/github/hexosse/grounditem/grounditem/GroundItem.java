@@ -1,6 +1,6 @@
-package com.github.hexosse.grounditemapi.grounditem;
+package com.github.hexosse.grounditem.grounditem;
 
-import com.github.hexosse.grounditemapi.utils.JsonGroundItem;
+import com.github.hexosse.grounditem.utils.JsonGroundItem;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Item;

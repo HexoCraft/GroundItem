@@ -1,4 +1,4 @@
-package com.github.hexosse.grounditemapi;
+package com.github.hexosse.grounditem;
 
 /*
  * Copyright 2015 Hexosse
@@ -18,12 +18,12 @@ package com.github.hexosse.grounditemapi;
 
 import com.github.hexosse.baseplugin.BasePlugin;
 import com.github.hexosse.githubupdater.GitHubUpdater;
-import com.github.hexosse.grounditemapi.configuration.Config;
-import com.github.hexosse.grounditemapi.grounditem.GroundItem;
-import com.github.hexosse.grounditemapi.listeners.ChunckListener;
-import com.github.hexosse.grounditemapi.listeners.GroundItemListener;
-import com.github.hexosse.grounditemapi.listeners.GroundItemPluginListener;
-import com.github.hexosse.grounditemapi.utils.JsonGroundItem;
+import com.github.hexosse.grounditem.configuration.Config;
+import com.github.hexosse.grounditem.grounditem.GroundItem;
+import com.github.hexosse.grounditem.listeners.ChunckListener;
+import com.github.hexosse.grounditem.listeners.GroundItemListener;
+import com.github.hexosse.grounditem.listeners.GroundItemPluginListener;
+import com.github.hexosse.grounditem.utils.JsonGroundItem;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;

@@ -1,4 +1,4 @@
-package com.github.hexosse.grounditemapi.configuration;
+package com.github.hexosse.grounditem.configuration;
 
 /*
  * Copyright 2015 Hexosse
@@ -17,7 +17,7 @@ package com.github.hexosse.grounditemapi.configuration;
  */
 
 import com.github.hexosse.baseplugin.config.BaseConfig;
-import com.github.hexosse.grounditemapi.GroundItemPlugin;
+import com.github.hexosse.grounditem.GroundItemPlugin;
 
 import java.io.File;
 import java.util.ArrayList;

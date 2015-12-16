@@ -1,9 +1,9 @@
-package com.github.hexosse.grounditemapi.listeners;
+package com.github.hexosse.grounditem.listeners;
 
 import com.github.hexosse.baseplugin.event.BaseListener;
-import com.github.hexosse.grounditemapi.GroundItemApi;
-import com.github.hexosse.grounditemapi.GroundItemPlugin;
-import com.github.hexosse.grounditemapi.grounditem.GroundItem;
+import com.github.hexosse.grounditem.GroundItemApi;
+import com.github.hexosse.grounditem.GroundItemPlugin;
+import com.github.hexosse.grounditem.grounditem.GroundItem;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Item;

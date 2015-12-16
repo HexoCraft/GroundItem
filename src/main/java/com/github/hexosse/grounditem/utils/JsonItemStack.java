@@ -1,4 +1,4 @@
-package com.github.hexosse.grounditemapi.utils;
+package com.github.hexosse.grounditem.utils;
 
 import com.google.common.primitives.Ints;
 import com.google.common.primitives.Shorts;

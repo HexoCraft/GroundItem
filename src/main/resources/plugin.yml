@@ -1,7 +1,7 @@
 name: ${project.name}
 version: ${project.version}
 description: ${project.description}
-main: com.github.hexosse.grounditemapi.GroundItemPlugin
+main: com.github.hexosse.grounditemoundItemPlugin
 
 author: hexosse
 website: www.github.hexosse

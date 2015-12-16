@@ -1,7 +1,7 @@
-package com.github.hexosse.grounditemapi.events.post;
+package com.github.hexosse.grounditem.events.post;
 
-import com.github.hexosse.grounditemapi.events.GroundItemEvent;
-import com.github.hexosse.grounditemapi.grounditem.GroundItem;
+import com.github.hexosse.grounditem.events.GroundItemEvent;
+import com.github.hexosse.grounditem.grounditem.GroundItem;
 
 /**
  * This file is part GroundItemApi

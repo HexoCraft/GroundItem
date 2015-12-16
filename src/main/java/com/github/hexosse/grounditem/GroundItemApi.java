@@ -1,11 +1,11 @@
-package com.github.hexosse.grounditemapi;
+package com.github.hexosse.grounditem;
 
 import com.github.hexosse.baseplugin.utils.LocationUtil;
-import com.github.hexosse.grounditemapi.events.post.CreatedGroundItemEvent;
-import com.github.hexosse.grounditemapi.events.post.RemovedGroundItemEvent;
-import com.github.hexosse.grounditemapi.events.pre.CreateGroundItemEvent;
-import com.github.hexosse.grounditemapi.events.pre.RemoveGroundItemEvent;
-import com.github.hexosse.grounditemapi.grounditem.GroundItem;
+import com.github.hexosse.grounditem.events.post.CreatedGroundItemEvent;
+import com.github.hexosse.grounditem.events.post.RemovedGroundItemEvent;
+import com.github.hexosse.grounditem.events.pre.CreateGroundItemEvent;
+import com.github.hexosse.grounditem.events.pre.RemoveGroundItemEvent;
+import com.github.hexosse.grounditem.grounditem.GroundItem;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;

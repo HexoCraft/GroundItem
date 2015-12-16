@@ -1,6 +1,6 @@
-package com.github.hexosse.grounditemapi.events;
+package com.github.hexosse.grounditem.events;
 
-import com.github.hexosse.grounditemapi.grounditem.GroundItem;
+import com.github.hexosse.grounditem.grounditem.GroundItem;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;

@@ -1,9 +1,9 @@
-package com.github.hexosse.grounditemapi.listeners;
+package com.github.hexosse.grounditem.listeners;
 
 import com.github.hexosse.baseplugin.event.BaseListener;
-import com.github.hexosse.grounditemapi.GroundItemPlugin;
-import com.github.hexosse.grounditemapi.events.post.CreatedGroundItemEvent;
-import com.github.hexosse.grounditemapi.events.post.RemovedGroundItemEvent;
+import com.github.hexosse.grounditem.GroundItemPlugin;
+import com.github.hexosse.grounditem.events.post.CreatedGroundItemEvent;
+import com.github.hexosse.grounditem.events.post.RemovedGroundItemEvent;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 
