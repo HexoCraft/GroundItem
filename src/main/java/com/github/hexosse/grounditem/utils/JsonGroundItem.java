@@ -7,7 +7,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 
 /**
- * This file is part of GroundItemApi
+ * This file is part of GroundItem
  */
 public class JsonGroundItem {
 

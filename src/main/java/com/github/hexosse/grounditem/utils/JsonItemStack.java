@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * This file is part of GroundItemApi
+ * This file is part of GroundItem
  */
 public class JsonItemStack {
 

@@ -24,7 +24,7 @@ import java.util.ArrayList;
 
 @BaseConfig.ConfigHeader(comment = {
         "############################################################",
-        "# | GroundItemApi by hexosse                             | #",
+        "# | GroundItem by hexosse                                | #",
         "############################################################"
 })
 @BaseConfig.ConfigFooter(comment = {
