@@ -1,16 +1,16 @@
 package com.github.hexosse.grounditemapi;
 
+import com.github.hexosse.baseplugin.utils.LocationUtil;
 import com.github.hexosse.grounditemapi.events.post.CreatedGroundItemEvent;
 import com.github.hexosse.grounditemapi.events.post.RemovedGroundItemEvent;
 import com.github.hexosse.grounditemapi.events.pre.CreateGroundItemEvent;
 import com.github.hexosse.grounditemapi.events.pre.RemoveGroundItemEvent;
 import com.github.hexosse.grounditemapi.grounditem.GroundItem;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Item;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.plugin.Plugin;
 
 import java.util.List;
 
@@ -49,6 +49,7 @@ public class GroundItemApi
         // Inform the plugin of ground item creation
         CreatedGroundItemEvent postEvent = new CreatedGroundItemEvent(groundItem);
         Bukkit.getPluginManager().callEvent(postEvent);
+
         return true;
     }
 
@@ -90,5 +91,16 @@ public class GroundItemApi
         if(itemStack.getItemMeta().getDisplayName().equals("#%#GROUND#%#ITEM#%#"))
             return true;
         return false;
+    }
+
+    public static  GroundItem findGroundItem(Location location)
+    {
+        Entity[] entities = location.getChunk().getEntities();
+        for(Entity entity : entities)
+        {
+            if(entity instanceof Item && LocationUtil.equals(entity.getLocation(),location))
+                return new GroundItem((Item)entity);
+        }
+        return null;
     }
 }

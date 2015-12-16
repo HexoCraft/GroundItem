@@ -25,6 +25,9 @@ import com.github.hexosse.grounditemapi.listeners.GroundItemListener;
 import com.github.hexosse.grounditemapi.listeners.GroundItemPluginListener;
 import com.github.hexosse.grounditemapi.utils.JsonGroundItem;
 import org.bukkit.Bukkit;
+import org.bukkit.World;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.Item;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -56,6 +59,17 @@ public class GroundItemPlugin extends BasePlugin
         Bukkit.getPluginManager().registerEvents(new GroundItemPluginListener(this), this);
         Bukkit.getPluginManager().registerEvents(new ChunckListener(this), this);
         Bukkit.getPluginManager().registerEvents(new GroundItemListener(this), this);
+
+        // Remove existing ground item from all worlds
+        for(World world : Bukkit.getServer().getWorlds())
+        {
+            List<Entity> entities = world.getEntities();
+            for(Entity entity : entities)
+            {
+                if(entity instanceof Item && GroundItemApi.isGroundItem(((Item)entity).getItemStack()))
+                    ((Item)entity).remove();
+            }
+        }
 
         // Create ground items from config file
         for(String jsonGroundItem : config.groundItemList) {

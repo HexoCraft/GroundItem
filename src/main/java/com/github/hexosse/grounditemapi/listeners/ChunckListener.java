@@ -1,8 +1,11 @@
 package com.github.hexosse.grounditemapi.listeners;
 
 import com.github.hexosse.baseplugin.event.BaseListener;
+import com.github.hexosse.grounditemapi.GroundItemApi;
 import com.github.hexosse.grounditemapi.GroundItemPlugin;
 import com.github.hexosse.grounditemapi.grounditem.GroundItem;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.Item;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.world.ChunkLoadEvent;
@@ -50,10 +53,11 @@ public class ChunckListener extends BaseListener<GroundItemPlugin>
     public void onChunkLoad(ChunkUnloadEvent event)
     {
         // Remove items as chunck unload
-        for(GroundItem groundItem : plugin.getGroundItemList())
+        Entity[] entities = event.getChunk().getEntities();
+        for(Entity entity : entities)
         {
-            if(groundItem.getItem()!=null && groundItem.getItem().getLocation().getChunk().equals(event.getChunk()))
-                groundItem.remove();
+            if(entity instanceof Item && GroundItemApi.isGroundItem(((Item)entity).getItemStack()))
+                ((Item)entity).remove();
         }
     }
 }

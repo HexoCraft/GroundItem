@@ -3,15 +3,10 @@ package com.github.hexosse.grounditemapi.grounditem;
 import com.github.hexosse.grounditemapi.utils.JsonGroundItem;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.Utility;
-import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import org.bukkit.entity.Item;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.util.Vector;
-
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 /**
  * This file is part GroundItemPlugin
@@ -33,8 +28,19 @@ public class GroundItem
      */
     public GroundItem(ItemStack itemStack, Location location)
     {
-        this.itemStack = itemStack;
+        this.itemStack = new ItemStack(itemStack);
         this.location = new Location(location.getWorld(), location.getX(), location.getY(), location.getZ());
+    }
+
+    /**
+     * Constructs a new GroundItem from an existing item
+     * @param item item to use as ground iten
+     */
+    public GroundItem(Item item)
+    {
+        this.groundItem = item;
+        this.itemStack = new ItemStack(item.getItemStack());
+        this.location = new Location(item.getLocation().getWorld(), item.getLocation().getX(), item.getLocation().getY(), item.getLocation().getZ());
     }
 
 
