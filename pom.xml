@@ -5,12 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.hexosse</groupId>
-    <artifactId>GroundItemApi</artifactId>
+    <artifactId>GroundItem</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
-    <name>GroundItemApi</name>
-    <description>API to create floating item</description>
-    <url>https://github.com/hexosse/GroundItemApi</url>
+    <name>GroundItem</name>
+    <description>Create floating item (with API)</description>
+    <url>https://github.com/hexosse/GroundItem</url>
 
 
     <!-- License -->
