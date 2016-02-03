@@ -240,7 +240,6 @@
                             <Version>${project.version}</Version>
                         </manifestEntries>
                     </archive>
-                    <outputDirectory>../../Server/plugins</outputDirectory>
                 </configuration>
             </plugin>
 
