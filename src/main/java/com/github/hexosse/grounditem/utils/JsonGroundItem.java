@@ -32,7 +32,7 @@ public class JsonGroundItem {
 
     public JsonGroundItem(final GroundItem groundItem)
     {
-        this.itemStack = groundItem.getItemStack();
+        this.itemStack = groundItem.getCustomItemStack();
         this.location = groundItem.getLocation();
     }
 

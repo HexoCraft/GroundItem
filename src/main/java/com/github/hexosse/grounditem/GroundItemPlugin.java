@@ -25,7 +25,9 @@ import com.github.hexosse.grounditem.listeners.GroundItemListener;
 import com.github.hexosse.grounditem.listeners.GroundItemPluginListener;
 import com.github.hexosse.grounditem.utils.JsonGroundItem;
 import com.github.hexosse.pluginframework.pluginapi.Plugin;
+import com.github.hexosse.pluginframework.pluginapi.message.Message;
 import com.github.hexosse.pluginframework.pluginapi.metric.MetricsLite;
+import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
@@ -74,6 +76,7 @@ public class GroundItemPlugin extends Plugin
         }
 
         // Create ground items from config file
+        groundItemList.clear();
         for(String jsonGroundItem : config.groundItemList) {
             final GroundItem groundItem = JsonGroundItem.fromJson(jsonGroundItem).toGroundItem();
             groundItemList.add(groundItem);
@@ -87,6 +90,12 @@ public class GroundItemPlugin extends Plugin
         /* Metrics */
         if(config.useMetrics)
             RunMetrics();
+
+		/* Console message */
+		Message message = new Message();
+		message.setPrefix("§3[§b" + this.getDescription().getName() + " " + this.getDescription().getVersion() + "§3]§r");
+		message.add(new Message(ChatColor.YELLOW, "Enable"));
+		messageManager.send(Bukkit.getConsoleSender(), message);
     }
 
     /**
@@ -96,6 +105,12 @@ public class GroundItemPlugin extends Plugin
     public void onDisable()
     {
         super.onDisable();
+
+		/* Console message */
+		Message message = new Message();
+		message.setPrefix("§3[§b" + this.getDescription().getName() + " " + this.getDescription().getVersion() + "§3]§r");
+		message.add(new Message(ChatColor.YELLOW, "Disabled"));
+		messageManager.send(Bukkit.getConsoleSender(), message);
     }
 
     public void RunUpdater(final boolean download)

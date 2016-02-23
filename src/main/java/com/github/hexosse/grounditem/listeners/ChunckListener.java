@@ -38,7 +38,8 @@ public class ChunckListener extends PluginListener<GroundItemPlugin>
     /**
      * @param plugin The plugin that this listener belongs to.
      */
-    public ChunckListener(GroundItemPlugin plugin) {
+    public ChunckListener(GroundItemPlugin plugin)
+    {
         super(plugin);
     }
 
@@ -52,28 +53,30 @@ public class ChunckListener extends PluginListener<GroundItemPlugin>
         // because of chunks not loaded at startup
         for(final GroundItem groundItem : plugin.getGroundItemList())
         {
-            new BukkitRunnable() {
+            new BukkitRunnable()
+            {
                 @Override
-                public void run() {
+                public void run()
+                {
                     groundItem.create();
                 }
 
-            }.runTaskLater(plugin, 20*2);
+            }.runTaskLater(plugin, 20 * 2);
         }
     }
 
     /**
      * @param event ChunkUnloadEvent
      */
-    @EventHandler(priority= EventPriority.HIGH)
+    @EventHandler(priority = EventPriority.HIGH)
     public void onChunkLoad(ChunkUnloadEvent event)
     {
         // Remove items as chunck unload
         Entity[] entities = event.getChunk().getEntities();
         for(Entity entity : entities)
         {
-            if(entity instanceof Item && GroundItemApi.isGroundItem(((Item)entity).getItemStack()))
-                ((Item)entity).remove();
+            if(entity instanceof Item && GroundItemApi.isGroundItem(((Item) entity).getItemStack()))
+                ((Item) entity).remove();
         }
     }
 }

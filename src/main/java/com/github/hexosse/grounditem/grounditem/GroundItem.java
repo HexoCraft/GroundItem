@@ -17,6 +17,7 @@ package com.github.hexosse.grounditem.grounditem;
  */
 
 import com.github.hexosse.grounditem.utils.JsonGroundItem;
+import com.github.hexosse.pluginframework.itemapi.CustomItemStack;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Item;
@@ -29,22 +30,23 @@ import org.bukkit.util.Vector;
  *
  * @author <b>hexosse</b> (<a href="https://github.comp/hexosse">hexosse on GitHub</a>))
  */
-public class GroundItem
+public class GroundItem extends CustomItemStack
 {
-    // the ground item
-    private Item groundItem = null;
+	// the ground item
+	private Item groundItem = null;
     // Data used to create the groung item
-    private ItemStack itemStack = null;
+    private ItemStack customItemStack = null;
     private Location location = null;
 
     /**
      * Constructs a new GroundItem at the given location
-     * @param itemStack itemStack to use as ground iten
+     * @param itemStack customItemStack to use as ground iten
      * @param location location of the ground item
      */
     public GroundItem(ItemStack itemStack, Location location)
     {
-        this.itemStack = new ItemStack(itemStack);
+        super(itemStack.getType(), itemStack.getAmount());
+        this.customItemStack = super.getItem();
         this.location = new Location(location.getWorld(), location.getX(), location.getY(), location.getZ());
     }
 
@@ -54,10 +56,9 @@ public class GroundItem
      */
     public GroundItem(Item item)
     {
-        this.groundItem = item;
-        this.itemStack = new ItemStack(item.getItemStack());
-        this.location = new Location(item.getLocation().getWorld(), item.getLocation().getX(), item.getLocation().getY(), item.getLocation().getZ());
-    }
+		this(item.getItemStack(),item.getLocation());
+		this.groundItem = item;
+	}
 
 
     /**
@@ -67,26 +68,21 @@ public class GroundItem
      */
     public boolean create()
     {
-        // Check if ground item already exist
-        if(groundItem!=null && (!groundItem.isDead() || groundItem.isValid())) return false;
-        // Check if location is valid
-        if(location==null) return false;
-        if(Bukkit.getServer().getWorld(location.getWorld().getName())==null) return false;
-        if(!location.getChunk().isLoaded()) return false;
-        // Check if Item Stack is valid
-        if(itemStack==null) return false;
+		// Check if ground item already exist
+		if(groundItem != null && (!groundItem.isDead() || groundItem.isValid())) return false;
+		// Check if location is valid
+		if(location == null) return false;
+		if(Bukkit.getServer().getWorld(location.getWorld().getName()) == null) return false;
+		if(!location.getChunk().isLoaded()) return false;
+		// Check if Item Stack is valid
+		if(customItemStack == null) return false;
 
-        // remove existing groung item
+		// remove existing groung item
         remove();
 
-        // Create ground item
-        groundItem = location.getWorld().dropItem(new Location(location.getWorld(), location.getX(), location.getY(), location.getZ()), itemStack);
-        groundItem.setVelocity(new Vector(0, 0, 0));
-
-        // Name the item so it will be easier to check if it's a ground item
-        final ItemMeta meta = groundItem.getItemStack().getItemMeta();
-        meta.setDisplayName("#%#GROUND#%#ITEM#%#");
-        groundItem.getItemStack().setItemMeta(meta);
+		// Create ground item
+		groundItem = location.getWorld().dropItem(new Location(location.getWorld(), location.getX(), location.getY(), location.getZ()), customItemStack);
+		groundItem.setVelocity(new Vector(0, 0, 0));
 
         return true;
     }
@@ -108,14 +104,14 @@ public class GroundItem
         return true;
     }
 
-    public Item getItem()
+    public Item getGroudItem()
     {
         return groundItem;
     }
 
-    public ItemStack getItemStack()
+    public ItemStack getCustomItemStack()
     {
-        return itemStack;
+        return customItemStack;
     }
 
     public Location getLocation()
@@ -128,7 +124,7 @@ public class GroundItem
     {
         int hash = 5;
 
-        hash = hash * 17 + this.itemStack.hashCode();
+        hash = hash * 17 + this.customItemStack.hashCode();
         hash = hash * 17 + this.location.hashCode();
 
         return hash;

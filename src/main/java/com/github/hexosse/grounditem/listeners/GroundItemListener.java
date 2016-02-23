@@ -31,6 +31,7 @@ import org.bukkit.event.entity.ItemMergeEvent;
 import org.bukkit.event.inventory.InventoryPickupItemEvent;
 import org.bukkit.event.player.PlayerPickupItemEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.scheduler.BukkitRunnable;
 
 /**
  * This file is part GroundItemPlugin
@@ -42,32 +43,33 @@ public class GroundItemListener extends PluginListener<GroundItemPlugin>
     /**
      * @param plugin The plugin that this listener belongs to.
      */
-    public GroundItemListener(GroundItemPlugin plugin) {
+    public GroundItemListener(GroundItemPlugin plugin)
+    {
         super(plugin);
     }
 
     /**
      * @param event ItemDespawnEvent
      */
-    @EventHandler(priority= EventPriority.HIGH, ignoreCancelled = true)
+    @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
     public void onItemDespawn(ItemDespawnEvent event)
     {
-        event.setCancelled(GroundItemApi.isGroundItem(event.getEntity()));
-    }
+		event.setCancelled(GroundItemApi.isGroundItem(event.getEntity()));
+	}
 
     /**
      * @param event ItemMergeEvent
      */
-    @EventHandler(priority= EventPriority.HIGH, ignoreCancelled = true)
+    @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
     public void onItemMerge(ItemMergeEvent event)
     {
-        event.setCancelled(GroundItemApi.isGroundItem(event.getEntity()));
+		event.setCancelled(GroundItemApi.isGroundItem(event.getEntity()));
     }
 
     /**
      * @param event InventoryPickupItemEvent
      */
-    @EventHandler(priority= EventPriority.HIGH, ignoreCancelled = true)
+    @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
     public void onInventoryPickupItem(InventoryPickupItemEvent event)
     {
         event.setCancelled(GroundItemApi.isGroundItem(event.getItem()));
@@ -76,7 +78,7 @@ public class GroundItemListener extends PluginListener<GroundItemPlugin>
     /**
      * @param event PlayerPickupItemEvent
      */
-    @EventHandler(priority= EventPriority.HIGH, ignoreCancelled = true)
+    @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
     public void onPlayerPickupItem(PlayerPickupItemEvent event)
     {
         event.setCancelled(GroundItemApi.isGroundItem(event.getItem()));
@@ -85,23 +87,34 @@ public class GroundItemListener extends PluginListener<GroundItemPlugin>
     /**
      * @param event EntityDeath
      */
-    @EventHandler(priority= EventPriority.HIGH, ignoreCancelled = true)
+    @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
     public void onEntityDeath(EntityDeathEvent event)
     {
         if(event.getEntity() instanceof Entity)
         {
-            Entity entity = (Entity)event.getEntity();
+            Entity entity = (Entity) event.getEntity();
 
             if(entity instanceof Item)
             {
                 Item item = (Item) entity;
 
-                if (GroundItemApi.isGroundItem(item)) {
+                if(GroundItemApi.isGroundItem(item))
+                {
                     ItemStack itemStack = item.getItemStack();
                     Location location = item.getLocation();
-                    GroundItem groundItem = new GroundItem(itemStack, location);
+                    final GroundItem groundItem = new GroundItem(itemStack, location);
                     GroundItemApi.removeGroundItem(groundItem);
-                    GroundItemApi.createGroundItem(groundItem);
+
+                    new BukkitRunnable()
+                    {
+                        @Override
+                        public void run()
+                        {
+							GroundItemApi.createGroundItem(groundItem);
+                        }
+
+                    }.runTaskLater(plugin, 10);
+
                 }
             }
         }

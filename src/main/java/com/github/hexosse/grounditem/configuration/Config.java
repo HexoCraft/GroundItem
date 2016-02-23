@@ -36,17 +36,17 @@ import java.util.ArrayList;
 public class Config extends PluginConfig<GroundItemPlugin>
 {
     /* Plugin */
-    @PluginConfig.ConfigComment(path = "plugin")
-    @PluginConfig.ConfigOptions(path = "plugin.useMetrics")
+    @ConfigComment(path = "plugin")
+    @ConfigOptions(path = "plugin.useMetrics")
     public boolean useMetrics = (boolean) true;
-    @PluginConfig.ConfigOptions(path = "plugin.useUpdater")
+    @ConfigOptions(path = "plugin.useUpdater")
     public boolean useUpdater = (boolean) true;
-    @PluginConfig.ConfigOptions(path = "plugin.downloadUpdate")
+    @ConfigOptions(path = "plugin.downloadUpdate")
     public boolean downloadUpdate = (boolean) true;
 
 
-    @PluginConfig.ConfigComment(path = "groundItem")
-    @PluginConfig.ConfigOptions(path = "groundItem.list")
+    @ConfigComment(path = "groundItem")
+    @ConfigOptions(path = "groundItem.list")
     public ArrayList<String> groundItemList = new ArrayList<String>();
 
     /**

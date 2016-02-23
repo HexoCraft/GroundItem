@@ -21,6 +21,7 @@ import com.github.hexosse.grounditem.events.post.RemovedGroundItemEvent;
 import com.github.hexosse.grounditem.events.pre.CreateGroundItemEvent;
 import com.github.hexosse.grounditem.events.pre.RemoveGroundItemEvent;
 import com.github.hexosse.grounditem.grounditem.GroundItem;
+import com.github.hexosse.pluginframework.itemapi.CustomItemStack;
 import com.github.hexosse.pluginframework.utilapi.LocationUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -95,28 +96,26 @@ public class GroundItemApi
         return true;
     }
 
-    public static Boolean isGroundItem(Item item)
-    {
-        return isGroundItem(item.getItemStack());
-    }
+	public static Boolean isGroundItem(Item item)
+	{
+		return item == null ? false : isGroundItem(item.getItemStack());
+	}
 
-    public static Boolean isGroundItem(ItemStack itemStack)
-    {
-        if(!itemStack.hasItemMeta())
-            return false;
-        if(itemStack.getItemMeta().getDisplayName().equals("#%#GROUND#%#ITEM#%#"))
-            return true;
-        return false;
-    }
+	public static Boolean isGroundItem(ItemStack itemStack)
+	{
+		return itemStack == null ? false : CustomItemStack.isCustomItemStack(itemStack,GroundItem.class);
+	}
 
-    public static  GroundItem findGroundItem(Location location)
-    {
-        Entity[] entities = location.getChunk().getEntities();
-        for(Entity entity : entities)
-        {
-            if(entity instanceof Item && LocationUtil.equals(entity.getLocation(),location))
-                return new GroundItem((Item)entity);
-        }
-        return null;
-    }
+	public static GroundItem findGroundItem(Location location)
+	{
+		if(location.getChunk().isLoaded()==false) return null;
+
+		Entity[] entities = location.getChunk().getEntities();
+		for(Entity entity : entities)
+		{
+			if(entity instanceof Item && LocationUtil.equals(entity.getLocation(),location))
+				return new GroundItem((Item)entity);
+		}
+		return null;
+	}
 }
