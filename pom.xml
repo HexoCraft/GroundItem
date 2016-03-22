@@ -6,7 +6,7 @@
 
     <groupId>com.github.hexosse</groupId>
     <artifactId>GroundItem</artifactId>
-    <version>1.2.0</version>
+    <version>1.2.1</version>
     <packaging>jar</packaging>
     <name>GroundItem</name>
     <description>Create floating item (with API)</description>
@@ -105,7 +105,7 @@
         <dependency>
             <groupId>com.github.hexosse</groupId>
             <artifactId>pluginframework</artifactId>
-            <version>0.4.0</version>
+            <version>0.4.1</version>
             <scope>compile</scope>
         </dependency>
         <!--hexosse GitHubUpdater-->
