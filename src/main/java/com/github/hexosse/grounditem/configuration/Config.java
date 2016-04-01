@@ -17,23 +17,23 @@ package com.github.hexosse.grounditem.configuration;
  */
 
 import com.github.hexosse.grounditem.GroundItemPlugin;
-import com.github.hexosse.pluginframework.pluginapi.config.PluginConfig;
+import com.github.hexosse.pluginframework.pluginapi.config.ConfigFile;
 
 import java.io.File;
 import java.util.ArrayList;
 
-@PluginConfig.ConfigHeader(comment = {
+@ConfigFile.ConfigHeader(comment = {
         "############################################################",
         "# | GroundItem by hexosse                                | #",
         "############################################################"
 })
-@PluginConfig.ConfigFooter(comment = {
+@ConfigFile.ConfigFooter(comment = {
         " ",
         " ",
         "############################################################"
 })
 
-public class Config extends PluginConfig<GroundItemPlugin>
+public class Config extends ConfigFile<GroundItemPlugin>
 {
     /* Plugin */
     @ConfigComment(path = "plugin")
