@@ -10,7 +10,7 @@
     <packaging>jar</packaging>
     <name>GroundItem</name>
     <description>Create floating item (with API)</description>
-    <url>https://github.com/hexosse/GroundItem</url>
+    <url>https://github.com/hexocube/GroundItem</url>
 
 
     <!-- License -->
@@ -25,14 +25,14 @@
 
     <!-- scm -->
     <scm>
-        <url>http://github.com/hexosse/GroundItem</url>
-        <connection>scm:git:git://github.com/hexosse/GroundItem.git</connection>
-        <developerConnection>scm:git:git@github.com:hexosse/GroundItem.git</developerConnection>
+        <url>http://github.com/hexocube/GroundItem</url>
+        <connection>scm:git:git://github.com/hexocube/GroundItem.git</connection>
+        <developerConnection>scm:git:git@github.com:hexocube/GroundItem.git</developerConnection>
     </scm>
 
     <issueManagement>
         <system>GitHub</system>
-        <url>https://github.com/hexosse/GroundItem/issues</url>
+        <url>https://github.com/hexocube/GroundItem/issues</url>
     </issueManagement>
 
 
